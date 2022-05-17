@@ -1550,9 +1550,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: isAttacking
-  - Type: 9
+  - Type: 4
     SynchronizeType: 2
-    Name: death
+    Name: isDead
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

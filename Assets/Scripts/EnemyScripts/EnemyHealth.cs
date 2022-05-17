@@ -27,13 +27,14 @@ public class EnemyHealth : MonoBehaviourPunCallbacks {
 
     void Die() {
         if (photonView.IsMine) {
-            anim.SetTrigger("death");
+            anim.SetBool("isDead", true);
             StartCoroutine(Death());
+            //transform.GetComponent<AlienController>().enabled = false;
         }
     }
 
     IEnumerator Death() {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(4f);
         Destroy(this.gameObject);
     }
 }

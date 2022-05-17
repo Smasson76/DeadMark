@@ -10,7 +10,7 @@ public class AlienCheckForPlayer : MonoBehaviour {
         alienController = this.transform.parent.gameObject; 
     }
     
-    void OnTriggerEnter(Collider c) {
+    void OnTriggerStay(Collider c) {
         if (c.gameObject.CompareTag("Player")) {
             alienController.GetComponent<AlienController>().player = c.gameObject;
         }

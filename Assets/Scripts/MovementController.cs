@@ -71,7 +71,7 @@ public class MovementController : MonoBehaviour {
         RotateCamera(_camUpDownRotation);
 
         //Jumping
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded){
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump") && isGrounded){
 
             body.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;

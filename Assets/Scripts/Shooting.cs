@@ -10,7 +10,8 @@ public class Shooting : MonoBehaviourPunCallbacks {
 
     PlayerSetup playerSetup;
 
-    public GameObject hitEffectPrefab;
+    public GameObject envHitEffectPrefab;
+    public GameObject enemyHitEffectPrefab;
 
     //Variables
     public float fireRate = 0.1f;
@@ -43,13 +44,14 @@ public class Shooting : MonoBehaviourPunCallbacks {
                 if (this.gameObject.GetComponent<TakingDamage>().health > 0f) {
                     
                     if (photonView.IsMine) {
-                        photonView.RPC("CreateHitEffect", RpcTarget.All, hit.point);
                         photonView.RPC("CreateShotSound", RpcTarget.All, hit.point);
                         photonView.RPC("CreateMuzzleFlash", RpcTarget.All, hit.point);
                     }
-
                     
                     if (hit.collider.gameObject.CompareTag("Player") && !hit.collider.gameObject.GetComponent<PhotonView>().IsMine) {
+                        if (photonView.IsMine) {
+                            photonView.RPC("EnemyHitEffect", RpcTarget.All, hit.point);
+                        }
                         hit.collider.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, 10f);
                         totalDamage += 10f;
                         playerSetup.damageText.text = "Damage: " + totalDamage;
@@ -58,10 +60,18 @@ public class Shooting : MonoBehaviourPunCallbacks {
                     }
 
                     if (hit.collider.gameObject.CompareTag("Enemy")) {
+                        if (photonView.IsMine) {
+                            photonView.RPC("EnemyHitEffect", RpcTarget.All, hit.point);
+                        }
                         hit.collider.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, 10f);
-                        //hit.collider.gameObject.GetComponent<EnemyHealth>().TakeDamage(10f);
                         totalDamage += 10f;
                         playerSetup.damageText.text = "Damage: " + totalDamage;
+                    }
+
+                    if (hit.collider.gameObject.CompareTag("Environment")) {
+                        if (photonView.IsMine) {
+                            photonView.RPC("EnvironementHitEffect", RpcTarget.All, hit.point);
+                        }
                     }
                 }
             }
@@ -69,9 +79,15 @@ public class Shooting : MonoBehaviourPunCallbacks {
     }
 
     [PunRPC]
-    public void CreateHitEffect(Vector3 pos) {
-        GameObject hitEffectGameobject = Instantiate(hitEffectPrefab, pos, Quaternion.identity);
-        Destroy(hitEffectGameobject, 0.5f);
+    public void EnvironementHitEffect(Vector3 pos) {
+        GameObject hitEffectGameobject = Instantiate(envHitEffectPrefab, pos, Quaternion.identity);
+        Destroy(hitEffectGameobject, 0.3f);
+    }
+
+    [PunRPC]
+    public void EnemyHitEffect(Vector3 pos) {
+        GameObject hitEffectGameobject = Instantiate(enemyHitEffectPrefab, pos, Quaternion.identity);
+        Destroy(hitEffectGameobject, 0.3f);
     }
 
     [PunRPC]

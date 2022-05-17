@@ -73,7 +73,7 @@ public class PlayerSetup : MonoBehaviourPunCallbacks {
                 Cursor.lockState = CursorLockMode.None;
             }
             else if (Input.GetKeyDown(KeyCode.Escape)) {
-             pauseMenu.SetActive(false);
+                pauseMenu.SetActive(false);
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }

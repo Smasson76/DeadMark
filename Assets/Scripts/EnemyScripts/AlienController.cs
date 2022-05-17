@@ -24,6 +24,7 @@ public class AlienController : MonoBehaviourPunCallbacks {
     public State state = State.Idle;
 
     Animator anim;
+    EnemyHealth health;
     public GameObject player;
     Rigidbody body;
 
@@ -31,7 +32,7 @@ public class AlienController : MonoBehaviourPunCallbacks {
         //photonView.ViewID = 999;
         body = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        //health = GetComponent<HealthController>();
+        health = GetComponent<EnemyHealth>();
         //anim.ApplyBuiltinRootMotion();
     }
 
@@ -41,6 +42,8 @@ public class AlienController : MonoBehaviourPunCallbacks {
             body.velocity = Vector3.zero;
             return;
         }
+
+        if (health.health <= 0) body.velocity = Vector3.zero;
 
         switch (state) {
             case State.Idle:
