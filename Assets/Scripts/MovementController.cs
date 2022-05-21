@@ -17,6 +17,10 @@ public class MovementController : MonoBehaviour {
     [SerializeField]
     GameObject fpsCamera;
 
+    //Aim Down Placement
+    public GameObject rightArmPlacement;
+    public GameObject leftArmPlacement;
+
     Vector3 velocity = Vector3.zero;
     Vector3 rotation = Vector3.zero;
     float cameraUpAndDownRotation = 0f;
@@ -75,6 +79,14 @@ public class MovementController : MonoBehaviour {
 
             body.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+        }
+
+        if (Input.GetButtonDown("Fire2")) {
+            anim.SetTrigger("aimSight");
+            lookSensitivity = 3f;
+        }
+        else if (Input.GetButtonUp("Fire2")) {
+            anim.SetTrigger("dontAimSight");
         }
     }
 

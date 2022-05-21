@@ -5003,6 +5003,8 @@ MonoBehaviour:
   lookSensitivity: 12
   jump: {x: 0, y: 1.5, z: 0}
   fpsCamera: {fileID: 9052782760866571843}
+  rightArmPlacement: {fileID: 5678895632669101276}
+  leftArmPlacement: {fileID: 5678895632424835034}
 --- !u!114 &9052782762206973070
 MonoBehaviour:
   m_ObjectHideFlags: 0

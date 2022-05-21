@@ -101,8 +101,8 @@ public class PlayerSetup : MonoBehaviourPunCallbacks {
     [PunRPC]
     public void GetKill(float kill) {
         if (this.gameObject.GetComponent<TakingDamage>().health <= 0f) {
-            //kills += kill;
-            //killsText.text = "Kills: " + kills;
+            kills += kill;
+            killsText.text = "Kills: " + kills;
         }
     }
 }
