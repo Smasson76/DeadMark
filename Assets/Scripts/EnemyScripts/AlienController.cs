@@ -29,7 +29,7 @@ public class AlienController : MonoBehaviourPunCallbacks {
     Rigidbody body;
 
     void Awake() {
-        //photonView.ViewID = 999;
+        photonView.ViewID = 999;
         body = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         health = GetComponent<EnemyHealth>();

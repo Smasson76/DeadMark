@@ -6,27 +6,48 @@ using Photon.Realtime;
 
 public class LaunchManager : MonoBehaviourPunCallbacks {    
 
-    public GameObject EnterGamePanel;
+    [Header("PUBLIC MENU OBJECTS")]
+    public GameObject nameCreationPanel;
     public GameObject ConnectionStatusPanel;
     public GameObject LobbyPanel;
+    public GameObject OpeningPanel;
 
+    // Awake() - sets mouse to lock to screen and calls PhotonNetwork to sync scene automatically
     void Awake() {
-        PhotonNetwork.AutomaticallySyncScene = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
+    //Start() - Sets every panel inactive except OpeningPanel
     void Start() {
-        EnterGamePanel.SetActive(true);
+        OpeningPanel.SetActive(true);
+        nameCreationPanel.SetActive(false);
         ConnectionStatusPanel.SetActive(false);
         LobbyPanel.SetActive(false);
+    }
+
+    void Update() {
+        if (Input.anyKey) {
+            OpeningPanel.SetActive(false);
+            ConnectToPhotonServer();
+        }
+    }
+
+    public void OnEnterLobbyButton() {
+        nameCreationPanel.SetActive(false);
+        LobbyPanel.SetActive(true);
+    }
+
+    public void OnlinePlayButton() {
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public void ConnectToPhotonServer() {
         if (!PhotonNetwork.IsConnected) {
             PhotonNetwork.ConnectUsingSettings();
             ConnectionStatusPanel.SetActive(true);
-            EnterGamePanel.SetActive(false);
+            nameCreationPanel.SetActive(false);
         }
     }
 
@@ -36,8 +57,8 @@ public class LaunchManager : MonoBehaviourPunCallbacks {
 
     public override void OnConnectedToMaster() {
         Debug.Log(PhotonNetwork.NickName + " Connected to photon servers");
-        LobbyPanel.SetActive(true);
-        ConnectionStatusPanel.SetActive(false);
+        nameCreationPanel.SetActive(true);
+        LobbyPanel.SetActive(false);
     }
 
     public override void OnConnected() {
