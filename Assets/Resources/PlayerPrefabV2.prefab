@@ -2860,6 +2860,8 @@ MonoBehaviour:
   lookSensitivity: 12
   jump: {x: 0, y: 1.5, z: 0}
   fpsCamera: {fileID: 9053066201428304155}
+  rightArmPlacement: {fileID: 0}
+  leftArmPlacement: {fileID: 0}
 --- !u!114 &9053066201695095766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2873,8 +2875,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 9053066201428304134}
-  hitEffectPrefab: {fileID: 1477052723577613553, guid: 6928b0706960d514095fd1895d671168,
-    type: 3}
+  envHitEffectPrefab: {fileID: 0}
+  enemyHitEffectPrefab: {fileID: 0}
   fireRate: 0.1
   gunSounds: {fileID: 0}
   gunShot: {fileID: 0}

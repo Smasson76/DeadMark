@@ -72,7 +72,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400004, guid: 6cae2f82a0a62ff4ab9be3eeeda19688, type: 3}
+    m_Motion: {fileID: 7400000, guid: 431f31f87fa388143af33b30e960bf30, type: 2}
     m_Threshold: 0.125
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -171,10 +171,10 @@ AnimatorStateMachine:
     m_Position: {x: 40, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3029587677016136584}
-    m_Position: {x: 700, y: 0, z: 0}
+    m_Position: {x: 790, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7413492556777633083}
-    m_Position: {x: 790, y: 110, z: 0}
+    m_Position: {x: 790, y: 50, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 8515058738431383774}
@@ -182,7 +182,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 810, y: -140, z: 0}
-  m_EntryPosition: {x: 450, y: -100, z: 0}
+  m_EntryPosition: {x: 450, y: -120, z: 0}
   m_ExitPosition: {x: 650, y: -220, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1151357996710839017}
@@ -569,9 +569,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.21281289
+  m_TransitionDuration: 0.6545554
   m_TransitionOffset: 0
-  m_ExitTime: 6.108642e-10
+  m_ExitTime: 2.1829138e-10
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -591,49 +591,49 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Horizontal
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Vertical
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isSoldier
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isDead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAiming
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: aimSight
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: dontAimSight
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -689,7 +689,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 2.012155
+  m_TransitionDuration: 1.8802398
   m_TransitionOffset: 0
   m_ExitTime: 0
   m_HasExitTime: 0
