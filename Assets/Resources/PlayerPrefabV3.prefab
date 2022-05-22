@@ -910,6 +910,7 @@ GameObject:
   - component: {fileID: 5279841643780833305}
   - component: {fileID: 9145156718304432060}
   - component: {fileID: 6417322554461059958}
+  - component: {fileID: 3539180826060233835}
   m_Layer: 6
   m_Name: M4_Carbine
   m_TagString: Untagged
@@ -981,6 +982,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3539180826060233835
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4759764588724968099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8597815, y: 0.25513783, z: 0.063597314}
+  m_Center: {x: -0.13222001, y: -0.012109504, z: -0.000000045742084}
 --- !u!1 &4759764589170085824
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +1006,7 @@ GameObject:
   - component: {fileID: 5279841644408411514}
   - component: {fileID: 9145156719000165087}
   - component: {fileID: 6417322554286468629}
+  - component: {fileID: 6049580229069446769}
   m_Layer: 6
   m_Name: M4_Carbine (1)
   m_TagString: Untagged
@@ -1062,6 +1077,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6049580229069446769
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4759764589170085824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8597818, y: 0.25513798, z: 0.0635974}
+  m_Center: {x: -0.13222015, y: -0.012109428, z: 0.000000099985485}
 --- !u!1 &5678895630999512834
 GameObject:
   m_ObjectHideFlags: 0
@@ -5813,7 +5841,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.05
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -6714,15 +6742,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
---- !u!198 &198000012224886707 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1060853507}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4000010676446905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011227296186, guid: 9defeac88977c0d448aa4541073ee9e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1060853507}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &198000012224886707 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4,
     type: 3}
   m_PrefabInstance: {fileID: 1060853507}
   m_PrefabAsset: {fileID: 0}
