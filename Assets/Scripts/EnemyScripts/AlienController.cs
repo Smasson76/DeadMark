@@ -8,9 +8,8 @@ public class AlienController : MonoBehaviourPunCallbacks {
     
     [Header("VARIABLES")]
     public float speed = 3f;
-    public float chaseDist = 100f;
     public float turnSpeed = 500f;
-    public float attackDist = 2f;
+    public float attackDist = 1.5f;
 
     public enum State {
         Idle,
@@ -58,17 +57,21 @@ public class AlienController : MonoBehaviourPunCallbacks {
 		Vector3 cross = Vector3.Cross(transform.forward, dir);
 		transform.Rotate(Vector3.up * cross.y * turnSpeed * Time.deltaTime);
 
-        float distance = Vector3.Distance(player.position, transform.position);
+        float distance = Vector3.Distance(player.position, this.transform.position);
+        Debug.Log(distance);
         if (PlayerFound() == true) {
             if (distance < attackDist) {
                 state = State.Attack;
                 body.velocity = Vector3.zero;
-                anim.SetTrigger("attack");
+                anim.SetBool("isAttacking", true);
                 anim.SetBool("isRunning", false);
+                Debug.Log("should be attacking");
             }
             else {
                 body.velocity = dir * speed;
                 anim.SetBool("isRunning", true);
+                anim.SetBool("isAttacking", false);
+                Debug.Log("should be running");
             }
         }
         else {

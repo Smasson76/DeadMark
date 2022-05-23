@@ -1442,9 +1442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  chaseDist: 200
   turnSpeed: 500
-  attackDist: 2
+  attackDist: 1.5
   state: 0
 --- !u!114 &5812778215148627934
 MonoBehaviour:
