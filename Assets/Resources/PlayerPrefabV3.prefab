@@ -5028,7 +5028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  lookSensitivity: 12
+  lookSensitivity: 10
   jump: {x: 0, y: 1.5, z: 0}
   fpsCamera: {fileID: 9052782760866571843}
   rightArmPlacement: {fileID: 5678895632669101276}

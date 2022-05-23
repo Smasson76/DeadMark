@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour {
     
     [SerializeField]
-    float speed = 1.5f;
+    float speed = 3f;
 
     public float lookSensitivity = 10f;
 
@@ -49,10 +49,10 @@ public class MovementController : MonoBehaviour {
         //Sprinting
         anim.SetBool("isRunning", Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Sprint"));
         if (anim.GetBool("isRunning") && !anim.GetBool("isAiming")) {
-            speed = 5f;
+            speed = 6f;
         }
         else {
-            speed = 2f;
+            speed = 3f;
         }
 
         //Final movement velocity vector
@@ -88,7 +88,8 @@ public class MovementController : MonoBehaviour {
         }
         else if (Input.GetButtonUp("Fire2")) {
             anim.SetTrigger("dontAimSight");
-            speed = 1.5f;
+            lookSensitivity = 10f;
+            speed = 3f;
         }
     }
 
