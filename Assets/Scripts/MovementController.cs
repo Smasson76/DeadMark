@@ -49,10 +49,10 @@ public class MovementController : MonoBehaviour {
         //Sprinting
         anim.SetBool("isRunning", Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Sprint"));
         if (anim.GetBool("isRunning") && !anim.GetBool("isAiming")) {
-            speed = 4f;
+            speed = 5f;
         }
         else {
-            speed = 1.5f;
+            speed = 2f;
         }
 
         //Final movement velocity vector
