@@ -71,17 +71,23 @@ public class PlayerSetup : MonoBehaviourPunCallbacks {
                 pauseMenu.SetActive(true);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+                transform.GetComponent<MovementController>().enabled = false;
+                transform.GetComponent<Shooting>().enabled = false;
             }
             else if (Input.GetKeyDown(KeyCode.Escape)) {
                 pauseMenu.SetActive(false);
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+                transform.GetComponent<MovementController>().enabled = true;
+                transform.GetComponent<Shooting>().enabled = true;
             }
         }
     }
 
     public void Resume() {
         pauseMenu.SetActive(false);
+        transform.GetComponent<MovementController>().enabled = true;
+        transform.GetComponent<Shooting>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

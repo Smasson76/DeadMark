@@ -58,7 +58,6 @@ public class AlienController : MonoBehaviourPunCallbacks {
 		transform.Rotate(Vector3.up * cross.y * turnSpeed * Time.deltaTime);
 
         float distance = Vector3.Distance(player.position, this.transform.position);
-        Debug.Log(distance);
         if (PlayerFound() == true) {
             if (distance < attackDist) {
                 state = State.Attack;
