@@ -7,13 +7,11 @@ using UnityEngine.UI;
 public class AlienController : MonoBehaviourPunCallbacks {
     
     [Header("VARIABLES")]
-    public float speed = 2;
-    public float chaseDist = 5;
-    public float turnSpeed = 1;
-    public float attackDist = 2;
+    public float speed = 3f;
+    public float chaseDist = 100f;
+    public float turnSpeed = 500f;
+    public float attackDist = 2f;
 
-    //bool isDead = false;
-    
     public enum State {
         Idle,
         Chase,
@@ -24,91 +22,63 @@ public class AlienController : MonoBehaviourPunCallbacks {
     public State state = State.Idle;
 
     Animator anim;
-    EnemyHealth health;
-    public GameObject player;
+    Transform player;
     Rigidbody body;
+    EnemyHealth health;
 
     void Awake() {
-        photonView.ViewID = 999;
         body = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
+		anim = GetComponent<Animator>();
         health = GetComponent<EnemyHealth>();
-        //anim.ApplyBuiltinRootMotion();
     }
 
     void Update() {
-        if (player == null) {
-            anim.SetBool("isRunning", false);
-            body.velocity = Vector3.zero;
-            return;
-        }
-
-        if (health.health <= 0) body.velocity = Vector3.zero;
-
         switch (state) {
-            case State.Idle:
-                IdleUpdate();
-                break;
-            case State.Chase:
-                ChaseUpdate();
-                break;
-            case State.Attack:
-                StartCoroutine(Attack());
-                break;
-            case State.Dead:
-                DeadUpdate();
-                break;
-            default:
-                break;
-        }
+			case State.Idle:		
+				IdleUpdate();
+				break;
+			case State.Chase:
+				ChaseUpdate();
+				break;
+			default:
+				break;
+		}
     }
 
     void IdleUpdate() {
-        anim.SetBool("isRunning", false);
         body.velocity = Vector3.zero;
-        float dist = Vector3.Distance(transform.position, player.transform.position);
-        if (dist < chaseDist) {
+
+        if (PlayerFound() == true) {
             state = State.Chase;
         }
     }
 
     void ChaseUpdate() {
-        Vector3 dir = (player.transform.position - transform.position).normalized;
-        Vector3 cross = Vector3.Cross(transform.forward, dir);
-        transform.Rotate(Vector3.up * cross.y * turnSpeed * Time.deltaTime);
+        Vector3 dir  = (player.position - transform.position).normalized;
+		Vector3 cross = Vector3.Cross(transform.forward, dir);
+		transform.Rotate(Vector3.up * cross.y * turnSpeed * Time.deltaTime);
 
-        float dist = Vector3.Distance(player.transform.position, transform.position);
-        if (dist > chaseDist) {
-            state = State.Idle;
-        }
-        else if (dist < attackDist) {
-            state = State.Attack;
-            body.velocity = Vector3.zero;
-        }
-        else {
-            anim.SetBool("isRunning", true);
-        }
-    }
-
-    void DeadUpdate() {
-        body.velocity = Vector3.zero;
-    }
-
-    IEnumerator Attack() {
-        anim.SetBool("isRunning", false);
-        anim.SetBool("isAttacking", true);
-        yield return new WaitForSeconds(3f);
-        if (player == null) {
-            anim.SetBool("isRunning", false);
-            anim.SetBool("isAttacking", false);
-            body.velocity = Vector3.zero;
-        }
-        else {
-            float dist = Vector3.Distance(transform.position, player.transform.position);
-            if (dist > attackDist) {
-                anim.SetBool("isAttacking", false);
-                state = State.Chase;
+        float distance = Vector3.Distance(player.position, transform.position);
+        if (PlayerFound() == true) {
+            if (distance < attackDist) {
+                state = State.Attack;
+                body.velocity = Vector3.zero;
+                anim.SetTrigger("attack");
+                anim.SetBool("isRunning", false);
+            }
+            else {
+                body.velocity = dir * speed;
+                anim.SetBool("isRunning", true);
             }
         }
+        else {
+            state = State.Idle;
+        }
+    }
+
+    bool PlayerFound() {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null) return false;
+        else return true;
     }
 }
