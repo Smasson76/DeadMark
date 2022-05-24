@@ -92,6 +92,18 @@ public class PlayerSetup : MonoBehaviourPunCallbacks {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void Options() {
+        //Eventually will make an options menu here
+    }
+
+    public void Controls() {
+        //Need a controls UI here
+    }
+
+    public void Respawn() {
+        this.transform.position = new Vector3(24f, 1.45f, -12f);
+    }
+
     public void QuitGame() {
         if (photonView.IsMine) {
             GameManager.instance.LeaveRoom();
