@@ -40,7 +40,7 @@ public class Shooting : MonoBehaviourPunCallbacks {
             
             RaycastHit hit;
             Ray ray = fpsCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100, 1 << LayerMask.NameToLayer("Target"))) {
+            if (Physics.Raycast(ray, out hit, 500, 1 << LayerMask.NameToLayer("Target"))) {
                 if (this.gameObject.GetComponent<TakingDamage>().health > 0f) {
                     
                     if (photonView.IsMine) {
