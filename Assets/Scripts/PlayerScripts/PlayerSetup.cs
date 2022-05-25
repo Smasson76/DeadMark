@@ -19,6 +19,8 @@ public class PlayerSetup : MonoBehaviourPunCallbacks {
     //Texts
     public Text killsText;
     public Text damageText;
+    public Text bulletsInChamperText;
+    public Text bulletsForReloadText;
 
     public GameObject pauseMenu;
     
@@ -110,10 +112,13 @@ public class PlayerSetup : MonoBehaviourPunCallbacks {
         }
     }
 
-    void SetPlayerUI() {
+    public void SetPlayerUI() {
         if (playerNameText != null) {
             playerNameText.text = photonView.Owner.NickName;
         }
+
+        bulletsInChamperText.text = "" + this.gameObject.GetComponent<Shooting>().bulletsInChamper;
+        bulletsForReloadText.text = "" + this.gameObject.GetComponent<Shooting>().bulletsForReload;
     }
 
     [PunRPC]

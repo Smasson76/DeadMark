@@ -18,6 +18,9 @@ public class Shooting : MonoBehaviourPunCallbacks {
     float fireTimer;
     float totalDamage = 0f;
 
+    public float bulletsInChamper = 25f;
+    public float bulletsForReload = 150f;
+
     //Gun sounds and effects
     public AudioSource gunSounds;
     public AudioClip gunShot;
@@ -33,10 +36,14 @@ public class Shooting : MonoBehaviourPunCallbacks {
             fireTimer += Time.deltaTime;
         }
 
-        if (Input.GetButton("Fire1") && fireTimer > fireRate) {
+        if (Input.GetButton("Fire1") && fireTimer > fireRate && bulletsInChamper > 0) {
 
             //Reset fireTimer
             fireTimer = 0.0f;
+
+            bulletsInChamper--;
+
+            playerSetup.SetPlayerUI();
             
             RaycastHit hit;
             Ray ray = fpsCam.ScreenPointToRay(Input.mousePosition);
@@ -75,6 +82,10 @@ public class Shooting : MonoBehaviourPunCallbacks {
                     }
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && bulletsForReload > 0 && bulletsInChamper < 25) {
+            BulletsAction();
         }    
     }
 
@@ -98,5 +109,18 @@ public class Shooting : MonoBehaviourPunCallbacks {
     [PunRPC]
     public void CreateMuzzleFlash(Vector3 pos) {
         muzzleFlash.Play();
+    }
+
+    void BulletsAction() {
+        if (bulletsForReload < 25) {
+            bulletsInChamper += bulletsForReload;
+            bulletsForReload -= bulletsInChamper;
+        }
+        else {
+            float newBullets = 25f - bulletsInChamper;
+            bulletsInChamper += newBullets;
+            bulletsForReload -= newBullets;
+        }
+        playerSetup.SetPlayerUI();
     }
 }
