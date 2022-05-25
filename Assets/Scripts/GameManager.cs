@@ -43,16 +43,16 @@ public class GameManager : MonoBehaviourPunCallbacks {
     IEnumerator StartAlienSpawn() {
         while (enabled) { 
             yield return new WaitForSeconds(10);
-            for (int i = 0; i < 1; i++) {
-                int nextEnemyPoint = Random.Range(0, 7);
+            for (int i = 0; i < 15; i++) {
+                int nextEnemyPoint = Random.Range(0, 2);
                 Vector3[] points = new Vector3[] {
-                    new Vector3(-3f, 0f, 118.4f),
-                    new Vector3(41f, 0f, 148f),
-                    new Vector3(-32f, 0f, 120f),
-                    new Vector3(117f, 0f, 101.9f),
-                    new Vector3(-95.6f, 0f, 70.6f),
-                    new Vector3(188f, 0f, 84.9f),
-                    new Vector3(236.7f, 0f, 211f)
+                    new Vector3(431f, 17.307f, 517f),
+                    new Vector3(431f, 17.307f, 517f)
+                    //new Vector3(-32f, 0f, 120f),
+                    //new Vector3(117f, 0f, 101.9f),
+                    //new Vector3(-95.6f, 0f, 70.6f),
+                   //new Vector3(188f, 0f, 84.9f),
+                    //new Vector3(236.7f, 0f, 211f)
                 };
                 PhotonNetwork.Instantiate(alienPrefab.name, points[nextEnemyPoint], Quaternion.identity);
             }
