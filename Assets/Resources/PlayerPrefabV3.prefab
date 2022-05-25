@@ -2284,8 +2284,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 527168955542430648, guid: 81501e68d54c2ce4cb6d0f06f3740a8e, type: 3}
-  - {fileID: -1495815949281941313, guid: 81501e68d54c2ce4cb6d0f06f3740a8e, type: 3}
+  - {fileID: 2100000, guid: 5da6355da96f6014f865cc7a972f8c83, type: 2}
+  - {fileID: 2100000, guid: f2ccaed2592413142ba8f026146f050e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2310,7 +2310,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 8341161198671653776, guid: 81501e68d54c2ce4cb6d0f06f3740a8e, type: 3}
+  m_Mesh: {fileID: 8341161198671653776, guid: d54a326943d23c345a06c0748decf3b9, type: 3}
   m_Bones:
   - {fileID: 5678895631518133492}
   - {fileID: 5678895631577122954}
@@ -5543,6 +5543,7 @@ MonoBehaviour:
   enemyHitEffectPrefab: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc,
     type: 3}
   fireRate: 0.1
+  totalKills: 0
   bulletsInChamper: 25
   bulletsForReload: 150
   gunSounds: {fileID: 2119162324}

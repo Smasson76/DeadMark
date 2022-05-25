@@ -334,7 +334,7 @@ BlendTree:
   m_Name: WalkBlendTree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 71c73b312c324eb498bff1b9dc7da54e,
+    m_Motion: {fileID: -203655887218126122, guid: ddf742e30165c234e8be98eee36a9a2c,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
@@ -465,7 +465,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25000006
+  m_TransitionDuration: 0.09853573
   m_TransitionOffset: 0
   m_ExitTime: 0.019967984
   m_HasExitTime: 0
@@ -515,9 +515,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.24999991
+  m_TransitionDuration: 0.10721328
   m_TransitionOffset: 0
-  m_ExitTime: 0.028172491
+  m_ExitTime: 0.02817249
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -914,7 +914,7 @@ BlendTree:
   m_Name: WalkBlendTree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 71c73b312c324eb498bff1b9dc7da54e,
+    m_Motion: {fileID: -203655887218126122, guid: ddf742e30165c234e8be98eee36a9a2c,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}

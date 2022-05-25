@@ -64,13 +64,11 @@ public class AlienController : MonoBehaviourPunCallbacks {
                 body.velocity = Vector3.zero;
                 anim.SetBool("isAttacking", true);
                 anim.SetBool("isRunning", false);
-                Debug.Log("should be attacking");
             }
             else {
                 body.velocity = dir * speed;
                 anim.SetBool("isRunning", true);
                 anim.SetBool("isAttacking", false);
-                Debug.Log("should be running");
             }
         }
         else {

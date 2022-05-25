@@ -84,6 +84,7 @@ public class PlayerSetup : MonoBehaviourPunCallbacks {
                 transform.GetComponent<Shooting>().enabled = true;
             }
         }
+        SetPlayerUI();
     }
 
     public void Resume() {
@@ -121,11 +122,12 @@ public class PlayerSetup : MonoBehaviourPunCallbacks {
         bulletsForReloadText.text = "" + this.gameObject.GetComponent<Shooting>().bulletsForReload;
     }
 
-    [PunRPC]
+    /*[PunRPC]
     public void GetKill(float kill) {
         if (this.gameObject.GetComponent<TakingDamage>().health <= 0f) {
-            kills += kill;
-            killsText.text = "Kills: " + kills;
+            if (photonView.IsMine) {
+                kills += kill;
+            }
         }
-    }
+    }*/
 }

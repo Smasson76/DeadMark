@@ -33,7 +33,6 @@ public class TakingDamage : MonoBehaviourPunCallbacks {
     
     void Die() {
         if (photonView.IsMine) {
-            this.gameObject.GetComponent<PlayerSetup>().GetKill(1f);
             anim.SetBool("isDead", true);
             StartCoroutine(Respawn());
         }

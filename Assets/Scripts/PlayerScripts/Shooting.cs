@@ -17,6 +17,7 @@ public class Shooting : MonoBehaviourPunCallbacks {
     public float fireRate = 0.1f;
     float fireTimer;
     float totalDamage = 0f;
+    public float totalKills = 0f;
 
     public float bulletsInChamper = 25f;
     public float bulletsForReload = 150f;
@@ -42,8 +43,6 @@ public class Shooting : MonoBehaviourPunCallbacks {
             fireTimer = 0.0f;
 
             bulletsInChamper--;
-
-            playerSetup.SetPlayerUI();
             
             RaycastHit hit;
             Ray ray = fpsCam.ScreenPointToRay(Input.mousePosition);
@@ -59,11 +58,14 @@ public class Shooting : MonoBehaviourPunCallbacks {
                         if (photonView.IsMine) {
                             photonView.RPC("EnemyHitEffect", RpcTarget.All, hit.point);
                         }
+                        if (hit.collider.gameObject.GetComponent<TakingDamage>().health <= 0f) {
+                            Debug.Log("Should get kill");
+                            totalKills++;
+                        }
                         hit.collider.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, 10f);
                         totalDamage += 10f;
                         playerSetup.damageText.text = "Damage: " + totalDamage;
-
-                        //hit.collider.gameObject.GetComponent<PhotonView>().RPC("GetKill", RpcTarget.AllBuffered, 1f);
+                        playerSetup.killsText.text = "Kills: " + totalKills;
                     }
 
                     if (hit.collider.gameObject.CompareTag("Enemy")) {
@@ -121,6 +123,5 @@ public class Shooting : MonoBehaviourPunCallbacks {
             bulletsInChamper += newBullets;
             bulletsForReload -= newBullets;
         }
-        playerSetup.SetPlayerUI();
     }
 }
