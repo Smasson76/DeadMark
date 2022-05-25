@@ -22,9 +22,6 @@ public class Shooting : MonoBehaviourPunCallbacks {
     public float bulletsInChamper = 25f;
     public float bulletsForReload = 150f;
 
-    //Gun sounds and effects
-    public AudioSource gunSounds;
-    public AudioClip gunShot;
     public ParticleSystem muzzleFlash;
 
 
@@ -57,6 +54,7 @@ public class Shooting : MonoBehaviourPunCallbacks {
                     if (hit.collider.gameObject.CompareTag("Player") && !hit.collider.gameObject.GetComponent<PhotonView>().IsMine) {
                         if (photonView.IsMine) {
                             photonView.RPC("EnemyHitEffect", RpcTarget.All, hit.point);
+                            photonView.RPC("CreateHitMarkerSound", RpcTarget.All, hit.point);
                         }
                         if (hit.collider.gameObject.GetComponent<TakingDamage>().health <= 0f) {
                             Debug.Log("Should get kill");
@@ -105,12 +103,17 @@ public class Shooting : MonoBehaviourPunCallbacks {
 
     [PunRPC]
     public void CreateShotSound(Vector3 pos) {
-        gunSounds.PlayOneShot(gunShot);
+        SoundManager.instance.soundEffectsSource.PlayOneShot(SoundManager.instance.soundClips[0]);
     }
 
     [PunRPC]
     public void CreateMuzzleFlash(Vector3 pos) {
         muzzleFlash.Play();
+    }
+    
+    [PunRPC]
+    public void CreateHitMarkerSound(Vector3 pos) {
+        SoundManager.instance.soundEffectsSource.PlayOneShot(SoundManager.instance.soundClips[1]);
     }
 
     void BulletsAction() {

@@ -5546,8 +5546,6 @@ MonoBehaviour:
   totalKills: 0
   bulletsInChamper: 25
   bulletsForReload: 150
-  gunSounds: {fileID: 2119162324}
-  gunShot: {fileID: 8300000, guid: 736a6ee94d8a94aef925851d18125a0c, type: 3}
   muzzleFlash: {fileID: 198000012224886707}
 --- !u!114 &6590568567755218184
 MonoBehaviour:
@@ -5619,7 +5617,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f6d4105c79d4db84788ce30f46e38284, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
