@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip[] soundClips;
 
     public AudioSource musicSource;
-    public AudioSource soundEffectsSource;
+    //public AudioSource soundEffectsSource;
 
     void Awake() {
         if (instance == null) {

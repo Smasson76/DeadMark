@@ -23,6 +23,7 @@ public class Shooting : MonoBehaviourPunCallbacks {
     public float bulletsForReload = 150f;
 
     public ParticleSystem muzzleFlash;
+    public AudioSource playerAudioSource;
 
 
     void Start() {
@@ -103,7 +104,7 @@ public class Shooting : MonoBehaviourPunCallbacks {
 
     [PunRPC]
     public void CreateShotSound(Vector3 pos) {
-        SoundManager.instance.soundEffectsSource.PlayOneShot(SoundManager.instance.soundClips[0]);
+        playerAudioSource.PlayOneShot(SoundManager.instance.soundClips[0]);
     }
 
     [PunRPC]
@@ -113,7 +114,7 @@ public class Shooting : MonoBehaviourPunCallbacks {
     
     [PunRPC]
     public void CreateHitMarkerSound(Vector3 pos) {
-        SoundManager.instance.soundEffectsSource.PlayOneShot(SoundManager.instance.soundClips[1]);
+        //SoundManager.instance.soundEffectsSource.PlayOneShot(SoundManager.instance.soundClips[1]);
     }
 
     void BulletsAction() {

@@ -5547,6 +5547,7 @@ MonoBehaviour:
   bulletsInChamper: 25
   bulletsForReload: 150
   muzzleFlash: {fileID: 198000012224886707}
+  playerAudioSource: {fileID: 2119162324}
 --- !u!114 &6590568567755218184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6991,7 +6992,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.191831
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

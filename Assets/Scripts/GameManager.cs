@@ -24,14 +24,14 @@ public class GameManager : MonoBehaviourPunCallbacks {
     void Start() {
         if (PhotonNetwork.IsConnected) {
             if (playerPrefab != null) {
-                int randomPoints = Random.Range(0, 6);
+                int randomPoints = Random.Range(0, 2);
                 Vector3[] points = new Vector3[] {
-                    new Vector3(24f, 1.45f, -12f),
-                    new Vector3(24f, 1.45f, 9f),
-                    new Vector3(-4f, 1.45f, 15f),
-                    new Vector3(-4f, 1.45f, -16f),
-                    new Vector3(-25f, 1.45f, -16f),
-                    new Vector3(-25f, 1.45f, 10f)
+                    new Vector3(431f, 17.307f, 517f),
+                    new Vector3(431f, 17.307f, 517f)
+                    //new Vector3(-4f, 1.45f, 15f),
+                    //new Vector3(-4f, 1.45f, -16f),
+                    //new Vector3(-25f, 1.45f, -16f),
+                    //new Vector3(-25f, 1.45f, 10f)
                 };
                 //PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(randomPoints, 0, randomPoints), Quaternion.identity);
                 PhotonNetwork.Instantiate(playerPrefab.name, points[randomPoints], Quaternion.identity);
