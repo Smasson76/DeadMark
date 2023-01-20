@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviourPunCallbacks {
             if (playerPrefab != null) {
                 int randomPoints = Random.Range(0, 2);
                 Vector3[] points = new Vector3[] {
-                    new Vector3(431f, 17.307f, 517f),
-                    new Vector3(431f, 17.307f, 517f)
+                    new Vector3(11.45f, 2.32f, -0.52f),
+                    new Vector3(-11.45f, 2.32f, -0.52f)
                     //new Vector3(-4f, 1.45f, 15f),
                     //new Vector3(-4f, 1.45f, -16f),
                     //new Vector3(-25f, 1.45f, -16f),
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
                 PhotonNetwork.Instantiate(playerPrefab.name, points[randomPoints], Quaternion.identity);
             }
         }
-        StartCoroutine(StartAlienSpawn());
+        //StartCoroutine(StartAlienSpawn());
     }
 
     IEnumerator StartAlienSpawn() {

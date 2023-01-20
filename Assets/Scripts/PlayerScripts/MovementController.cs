@@ -36,8 +36,8 @@ public class MovementController : MonoBehaviour {
     }
 
     void Update() {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
 
         Vector3 horizontalMovement = transform.right * x;
         Vector3 verticalMovement = transform.forward * z;
