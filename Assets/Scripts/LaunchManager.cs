@@ -73,7 +73,7 @@ public class LaunchManager : MonoBehaviourPunCallbacks {
 
     public override void OnJoinedRoom() {
         Debug.Log(PhotonNetwork.NickName + " joined to" + PhotonNetwork.CurrentRoom.Name);
-        PhotonNetwork.LoadLevel("Scene_A");
+        PhotonNetwork.LoadLevel("GameScene");
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
