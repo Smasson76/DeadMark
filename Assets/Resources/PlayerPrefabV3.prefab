@@ -5521,6 +5521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   lookSensitivity: 10
+  isGrounded: 0
   jump: {x: 0, y: 1.5, z: 0}
   fpsCamera: {fileID: 9052782760866571843}
   rightArmPlacement: {fileID: 5678895632669101276}
@@ -5544,6 +5545,10 @@ MonoBehaviour:
     type: 3}
   fireRate: 0.1
   totalKills: 0
+  playerGunTransform: {fileID: 5279841643780833305}
+  shakeDuration: 0.25
+  shakeAmount: 0.001
+  decreaseFactor: 1
   bulletsInChamper: 25
   bulletsForReload: 150
   muzzleFlash: {fileID: 198000012224886707}

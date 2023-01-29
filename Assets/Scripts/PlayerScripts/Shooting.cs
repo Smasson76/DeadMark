@@ -19,6 +19,12 @@ public class Shooting : MonoBehaviourPunCallbacks {
     float totalDamage = 0f;
     public float totalKills = 0f;
 
+    public Transform playerGunTransform;
+    Vector3 originalPos;
+    public float shakeDuration = 0f;
+    public float shakeAmount = 0.7f;
+	public float decreaseFactor = 1.0f;
+
     public float bulletsInChamper = 25f;
     public float bulletsForReload = 150f;
 
@@ -28,6 +34,7 @@ public class Shooting : MonoBehaviourPunCallbacks {
 
     void Start() {
         playerSetup = GetComponent<PlayerSetup>();
+        originalPos = playerGunTransform.localPosition;
     }
 
     void Update() {
@@ -41,6 +48,8 @@ public class Shooting : MonoBehaviourPunCallbacks {
             fireTimer = 0.0f;
 
             bulletsInChamper--;
+
+            shakeDuration = 0.2f;
             
             RaycastHit hit;
             Ray ray = fpsCam.ScreenPointToRay(Input.mousePosition);
@@ -83,7 +92,21 @@ public class Shooting : MonoBehaviourPunCallbacks {
                     }
                 }
             }
+
+            else {
+                shakeDuration = 0;
+                originalPos = playerGunTransform.localPosition;
+            }
         }
+
+        if (shakeDuration > 0) {
+			playerGunTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+			shakeDuration -= Time.deltaTime * decreaseFactor;
+		}
+		else {
+			shakeDuration = 0f;
+			playerGunTransform.localPosition = originalPos;
+		}
 
         if (Input.GetKeyDown(KeyCode.R) && bulletsForReload > 0 && bulletsInChamper < 25) {
             BulletsAction();

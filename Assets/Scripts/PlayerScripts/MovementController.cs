@@ -11,7 +11,7 @@ public class MovementController : MonoBehaviour {
 
     //Jumping variables
     float jumpForce = 2.0f;
-    bool isGrounded;
+    public bool isGrounded;
     public Vector3 jump;
 
     [SerializeField]
@@ -49,10 +49,10 @@ public class MovementController : MonoBehaviour {
         //Sprinting
         anim.SetBool("isRunning", Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Sprint"));
         if (anim.GetBool("isRunning") && !anim.GetBool("isAiming")) {
-            speed = 6f;
+            speed = 4f;
         }
         else {
-            speed = 3f;
+            speed = 2f;
         }
 
         //Final movement velocity vector
@@ -75,7 +75,7 @@ public class MovementController : MonoBehaviour {
         RotateCamera(_camUpDownRotation);
 
         //Jumping
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump") && isGrounded){
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded || Input.GetButtonDown("Jump") && isGrounded){
 
             body.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
