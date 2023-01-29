@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MovementController : MonoBehaviour {
+public class MovementController : MonoBehaviourPunCallbacks {
     
     [SerializeField]
     float speed = 3f;
@@ -21,6 +22,9 @@ public class MovementController : MonoBehaviour {
     public GameObject rightArmPlacement;
     public GameObject leftArmPlacement;
 
+    public GameObject openCrosshairUI;
+    public GameObject closedCrosshairUI;
+
     Vector3 velocity = Vector3.zero;
     Vector3 rotation = Vector3.zero;
     float cameraUpAndDownRotation = 0f;
@@ -33,6 +37,9 @@ public class MovementController : MonoBehaviour {
         body = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 1.5f, 0.0f);
         anim = GetComponent<Animator>();
+
+        openCrosshairUI.gameObject.SetActive(true);
+        closedCrosshairUI.gameObject.SetActive(false);
     }
 
     void Update() {
@@ -49,7 +56,7 @@ public class MovementController : MonoBehaviour {
         //Sprinting
         anim.SetBool("isRunning", Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Sprint"));
         if (anim.GetBool("isRunning") && !anim.GetBool("isAiming")) {
-            speed = 4f;
+            speed = 4f;            
         }
         else {
             speed = 2f;
@@ -81,15 +88,21 @@ public class MovementController : MonoBehaviour {
             isGrounded = false;
         }
 
-        if (Input.GetButtonDown("Fire2")) {
+        if (Input.GetButtonDown("Fire2") && photonView.IsMine) {
             anim.SetTrigger("aimSight");
             lookSensitivity = 1.5f;
             speed = 1f;
+
+            openCrosshairUI.gameObject.SetActive(false);
+            closedCrosshairUI.gameObject.SetActive(true);
         }
-        else if (Input.GetButtonUp("Fire2")) {
+        else if (Input.GetButtonUp("Fire2")  && photonView.IsMine) {
             anim.SetTrigger("dontAimSight");
             lookSensitivity = 10f;
             speed = 3f;
+
+            openCrosshairUI.gameObject.SetActive(true);
+            closedCrosshairUI.gameObject.SetActive(false);
         }
     }
 
